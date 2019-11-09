@@ -1,0 +1,52 @@
+// sass-lint:disable indentation
+$body-width: 800px;
+$min-body-width: 320px;
+$min-textarea-height: 480px;
+$max-textarea-height: 640px;
+
+body {
+	font-family: DejaVu Sans;
+	margin: 0 auto;
+	min-width: $min-body-width;
+	padding: 0;
+	width: $body-width;
+}
+
+@media(max-width: $body-width + 40px) {
+	body { width: 95%; }
+}
+
+header {
+	position: relative;
+}
+
+form.login-form {
+	text-align: center
+}
+
+form.chat-form {
+	display: none;
+}
+
+textarea {
+	box-sizing: border-box;
+	height: auto;
+	max-height: $max-textarea-height;
+	min-height: $min-textarea-height;
+	resize: none;
+	padding: 2%;
+	width: 100%;
+}
+
+div.msg-input-div {
+		overflow:hidden;
+}
+
+div.send-btn-div {
+		float: right;
+	}
+
+input.msg-input {
+	box-sizing: border-box;
+	width: 100%;
+}

@@ -1,0 +1,28 @@
+doctype html
+html(lang=en)
+
+	head
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		link(rel="stylesheet" type="text/css" href="./css/style.css")
+		script(src="./js/gui.js")
+		script(src="./js/client.js")
+		title Chat
+
+	body(onload="onDocumentLoad()")
+		header
+			h1 Chat
+
+		form.login-form(id="login-form" onsubmit="return false")
+			label(for="name-input") Name
+			input(id="name-input" maxlength="50")
+			button(id="enter-btn" type="button" onclick="enterBtnOnClick()") Enter
+
+		form.chat-form(id="chat-form" onsubmit="return false")
+			p(id="users-online-p") Users online:
+			textarea(id="chat-history-txtarea" readonly)
+			br
+			div.send-btn-div
+				button(id="send-btn" type="button" onclick="sendBtnOnClick()") Send
+			div.msg-input-div
+				input.msg-input(id="msg-input" maxlength="1000")

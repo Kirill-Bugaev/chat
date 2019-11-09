@@ -1,0 +1,22 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "simple chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kirill Bugaev",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.13.0"
+  },
+  "dependencies": {
+    "gulp-html-beautify": "^1.0.1",
+    "gulp-livereload": "^4.0.2",
+    "gulp-pug": "^4.0.1"
+  }
+}

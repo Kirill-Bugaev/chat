@@ -1,0 +1,5 @@
+**/tags
+**/.eslintrc.js
+**/.eslintrc.json
+**/.eslintrc.yml
+node_modules

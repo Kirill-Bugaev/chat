@@ -1,0 +1,38 @@
+body {
+  font-family: DejaVu Sans;
+  margin: 0 auto;
+  min-width: 320px;
+  padding: 0;
+  width: 800px; }
+
+@media (max-width: 840px) {
+  body {
+    width: 95%; } }
+
+header {
+  position: relative; }
+
+form.login-form {
+  text-align: center; }
+
+form.chat-form {
+  display: none; }
+
+textarea {
+  box-sizing: border-box;
+  height: auto;
+  max-height: 640px;
+  min-height: 480px;
+  resize: none;
+  padding: 2%;
+  width: 100%; }
+
+div.msg-input-div {
+  overflow: hidden; }
+
+div.send-btn-div {
+  float: right; }
+
+input.msg-input {
+  box-sizing: border-box;
+  width: 100%; }
