@@ -12,3 +12,6 @@ Simple chat.
 6. USE chat;
 7. SOURCE {project_directory}/sql/create_tables.sql;
 
+# Run
+
+{project_directory}/build/index.html;
