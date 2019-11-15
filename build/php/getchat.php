@@ -27,8 +27,7 @@ check_token($dbconn, $name, $token);
 update_user_activity($dbconn, $name);
 
 // Get online users
-$time_threshold = date("Y-m-d H:i:s", time() - $user_conn_timeout);
-$query = "SELECT name FROM users WHERE last_activity > '$time_threshold' ORDER BY name";
+$query = "SELECT name FROM users WHERE last_activity > DATE_SUB(NOW(), INTERVAL $user_conn_timeout SECOND) ORDER BY name";
 $users_result = $dbconn->query($query);
 check_query_result($dbconn, $users_result);
 

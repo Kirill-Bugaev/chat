@@ -24,19 +24,20 @@ $query = "SELECT last_activity FROM users WHERE name = '$name';";
 $result = $dbconn->query($query);
 check_query_result($dbconn, $result);
 
-$cur_datetime = date("Y-m-d H:i:s");
-$token = gen_token();
 if ($result->num_rows == 0) {
 	$result->close();
-	$query = "INSERT INTO users(name, token, last_activity) VALUES('$name', '$token', '$cur_datetime');";
+	$token = gen_token();
+	$query = "INSERT INTO users(name, token) VALUES('$name', '$token');";
 	$result = $dbconn->query($query);
 	check_query_result($dbconn, $result);
 } else {
+	$db_time = get_db_time($dbconn);
 	$row = $result->fetch_array(MYSQLI_ASSOC);
-	if (time() - strtotime($row['last_activity']) < $user_conn_timeout)
+	if (strtotime($db_time) - strtotime($row['last_activity']) < $user_conn_timeout)
 		xml_die("User name busy");
 	$result->close();
-	$query = "UPDATE users SET token = '$token', last_activity = '$cur_datetime' WHERE name = '$name';";
+	$token = gen_token();
+	$query = "UPDATE users SET token = '$token' WHERE name = '$name';";
 	$result = $dbconn->query($query);
 	check_query_result($dbconn, $result);
 }
