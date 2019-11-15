@@ -100,12 +100,12 @@ function enterChat(userName) {
 		window.userName = userName;
 		window.token = token;
 		showChat();
-		window.setTimeout(getNewMessages, historyUpdateTimeout);
+		window.setTimeout(updateChat, historyUpdateTimeout);
 	});
 }
 
-function getNewMessages() {
-	clientGetMessages(userName, token, lastMsgId, (response) => {
+function updateChat() {
+	clientGetChat(userName, token, lastMsgId, (response) => {
 		if (response != null) {
 			updateOnlineUsers(response.users);
 			if (response.messages.length != 0 ) {
@@ -113,7 +113,7 @@ function getNewMessages() {
 				updateHistory(response.messages);
 			}
 		}
-		window.setTimeout(getNewMessages, historyUpdateTimeout);
+		window.setTimeout(updateChat, historyUpdateTimeout);
 	});
 }
 

@@ -57,9 +57,9 @@ $rows = $messages_result->num_rows;
 for ($i = 0; $i < $rows; $i++) {
 	$row = $messages_result->fetch_array(MYSQLI_ASSOC);
 	echo '<msg'
-		. ' id="'    . $row['id']         . '"'
-		. ' time="'  . $row['time']       . '"'
-		. ' uname="' . $row['user_name'] . '"'
+		. ' id="'    . $row['id']                      . '"'
+		. ' time="'  . $row['time']                    . '"'
+		. ' uname="' . htmlentities($row['user_name']) . '"'
 		. '>'        . htmlentities($row['text'])
 		. '</msg>';
 }

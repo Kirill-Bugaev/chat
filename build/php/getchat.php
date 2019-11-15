@@ -21,7 +21,7 @@ else
 if ( isset($_POST['last_msg_id']) && ($last_msg_id = trim($_POST['last_msg_id'])) != "" )
 	$last_msg_id = mysqli_real_escape_string($dbconn, $last_msg_id);
 else
-	xml_die("Token should be specified");
+	xml_die("Last message id should be specified");
 
 check_token($dbconn, $name, $token);
 update_user_activity($dbconn, $name);
@@ -57,9 +57,9 @@ $rows = $messages_result->num_rows;
 for ($i = 0; $i < $rows; $i++) {
 	$row = $messages_result->fetch_array(MYSQLI_ASSOC);
 	echo '<msg'
-		. ' id="'    . $row['id']         . '"'
-		. ' time="'  . $row['time']       . '"'
-		. ' uname="' . $row['user_name'] . '"'
+		. ' id="'    . $row['id']                      . '"'
+		. ' time="'  . $row['time']                    . '"'
+		. ' uname="' . htmlentities($row['user_name']) . '"'
 		. '>'        . htmlentities($row['text'])
 		. '</msg>';
 }

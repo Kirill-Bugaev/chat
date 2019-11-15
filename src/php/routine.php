@@ -27,7 +27,7 @@ function check_token($dbconn, $name, $token) {
 	$result = $dbconn->query($query);
 	check_query_result($dbconn, $result);
 	if ($result->num_rows == 0)
-		xml_die("Invalid token");
+		xml_die("Invalid user name or token");
 	$result->close();
 }
 

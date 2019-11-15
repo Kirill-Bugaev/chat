@@ -1,3 +1,19 @@
+// -- back-end config --
+
+const phpBackEndURI = new Object;
+phpBackEndURI.enterChat = "./php/enterchat.php";
+phpBackEndURI.getChat = "./php/getchat.php";
+phpBackEndURI.sendMsg = "./php/sendmsg.php";
+
+const javaBackEndURI = new Object;
+javaBackEndURI.host = "http://localhost";
+javaBackEndURI.port = "8080";
+javaBackEndURI.pref = javaBackEndURI.host + ":" + javaBackEndURI.port;
+javaBackEndURI.enterChat = javaBackEndURI.pref + "/enter";
+javaBackEndURI.getChat = javaBackEndURI.pref + "/update";
+javaBackEndURI.sendMsg = javaBackEndURI.pref + "/send";
+
+const backEndURI = phpBackEndURI; // php or java
 
 // -- client routine --
 
@@ -95,14 +111,14 @@ function sendMessageResponseHandler(xmlDoc) {
 // -- client API --
 
 function clientLogin(userName, callback) {
-	let request = asyncRequest("./php/enterchat.php", loginResponseHandler, callback);
+	let request = asyncRequest(backEndURI.enterChat, loginResponseHandler, callback);
 	let params = "name=" + encodeURIComponent(userName);
 	setRequestHeader(request, params.length);
 	request.send(params);
 }
 
-function clientGetMessages(userName, token, lastMsgId, callback) {
-	let request = asyncRequest("./php/getmsgs.php", getMessagesResponseHandler, callback);
+function clientGetChat(userName, token, lastMsgId, callback) {
+	let request = asyncRequest(backEndURI.getChat, getMessagesResponseHandler, callback);
 	let params = "name=" + encodeURIComponent(userName);
 	params += "&token=" + token + "&last_msg_id=" + lastMsgId;
 	setRequestHeader(request, params.length);
@@ -110,7 +126,7 @@ function clientGetMessages(userName, token, lastMsgId, callback) {
 }
 
 function clientSendMessage(userName, token, text, callback) {
-	let request = asyncRequest("./php/sendmsg.php", sendMessageResponseHandler, callback);
+	let request = asyncRequest(backEndURI.sendMsg, sendMessageResponseHandler, callback);
 	let params = "name=" + encodeURIComponent(userName);
 	params += "&token=" + token;
 	params += "&text=" + encodeURIComponent(text);

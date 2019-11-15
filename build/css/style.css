@@ -12,9 +12,6 @@ body {
 header {
   position: relative; }
 
-form.login-form {
-  text-align: center; }
-
 form.chat-form {
   display: none; }
 
