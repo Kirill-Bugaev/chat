@@ -12,7 +12,7 @@
     "eslint": "^6.6.0",
     "gulp": "^4.0.2",
     "gulp-sass": "^4.0.2",
-    "node-sass": "^4.13.0"
+    "node-sass": "^4.13.1"
   },
   "dependencies": {
     "gulp-html-beautify": "^1.0.1",
